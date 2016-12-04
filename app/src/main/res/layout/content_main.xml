@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="user"
-            type="com.example.mvvmdemo.UserBean"/>
-
-        <variable
             name="viewModel"
             type="com.example.mvvmdemo.MainViewModel"/>
 
@@ -78,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="@{user.name + '\n'  + user.sex + '\n' + user.age}" />
+            android:text="@{viewModel.user.name + '\n'  + viewModel.user.sex + '\n' + viewModel.user.age}" />
     </LinearLayout>
 
 </layout>

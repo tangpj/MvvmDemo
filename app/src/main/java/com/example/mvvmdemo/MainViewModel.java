@@ -1,7 +1,11 @@
 package com.example.mvvmdemo;
 
 
+import android.app.Activity;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.mvvmdemo.databinding.ActivityMainBinding;
@@ -18,18 +22,27 @@ public class MainViewModel {
 
     private ActivityMainBinding activityMainBinding;
     private ContentMainBinding contentMainBinding;
+    private AppCompatActivity activity;
 
-    private UserBean user;
+    public UserBean user;
 
-    public MainViewModel(ActivityMainBinding activityMainBinding){
+    public MainViewModel(AppCompatActivity activity, ActivityMainBinding activityMainBinding){
+        this.activity = activity;
         this.activityMainBinding = activityMainBinding;
         this.contentMainBinding = activityMainBinding.contentMain;
         init();
     }
 
     public void init(){
+        activity.setSupportActionBar(activityMainBinding.toolbar);
+        activityMainBinding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         user = new UserBean();
-        contentMainBinding.setUser(user);
         contentMainBinding.setViewModel(this);
 
     }
